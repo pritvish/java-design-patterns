@@ -1,0 +1,28 @@
+Pattern details :
+
+1. The observer patterns works out on the publish-subscribe mechanism, where we have two interfaces observer and observable.
+
+2. Whenever there is any change taking place as part of the observable's implementation object, the list of observers are
+   being notified through the publish-subscribe mechanism (notify method).
+
+3. Examples -> Whatsapp group, weather forecast, new youtube videos notification, live sports notification, stock price updates
+
+Implementation details :
+
+1. We create an Observable (Subject) interface and declare methods like
+    void subscribe(Observer observer);
+    void unsubscribe(Observer observer);
+    void notifySubscribers(String message);
+
+2. We create an Observer interface and declare method
+    void update(String message); // here we can use update object with String message interchangeably for ex: Message message
+
+3. We implement the Observable using some concrete class (here : OfficeUpdates.java)
+    - OfficeUpdates.java can be further extended to add extra functionality
+    - We implement all the methods of Observable (Subject) in OfficeUpdates.java and use the update method inside the
+      notifySubscribers method to update the subscribed observers.
+
+4. We use the Employee and Manager class to implement the Observer interface and define the update method.
+
+5. Driver class is used to subscribe the employees and managers objects and we use the Subject concretion (OfficeUpdates)
+   and its subclasses (EmergencyOfficeUpdates) to call the notifySubscribers method which internally calls the update method.
