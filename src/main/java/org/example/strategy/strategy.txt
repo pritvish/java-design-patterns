@@ -1,11 +1,14 @@
 Implementation details :
 
-FileType is the abstract class, which would be extended by different types of files for example PDFInvoiceFile and ExcelQuotationFile
+- FileType is the abstract class, which would be extended by different types of files for example PDFInvoiceFile and ExcelQuotationFile
 
-Different behaviours are used as FileContentDecider(interface) and FileTypeDecider(interface) which are used as composition(has-a) in FileType abstract class
+- Different behaviours are used as FileContentDecider(interface) and FileTypeDecider(interface) which are used as composition(has-a) in FileType abstract class
 
-InvoiceFile, QuotationFile implements FileContentDecider(interface)
+- InvoiceFile, QuotationFile implements FileContentDecider(interface)
 PDFFileType, TextFileType, ExcelFileType implements FileTypeDecider(interface)
 
-We then create classes with different configurations from the available file types and content and then create classes
+- We then create classes with different configurations from the available file types and content and then create classes
 , we then use those classes in our client application (ex: PDFInvoiceFile, ExcelQuotationFile).
+
+- Basically we have 1...n strategy interface which is implemented by 1...n implementation classes per strategy interface
+- Context class (contains the <has-a> 1...n strategy interface(s) ) and we can create multiple context classes to be used in our main class.
